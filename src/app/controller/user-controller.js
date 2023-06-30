@@ -65,9 +65,26 @@ function validarEjercicio_1(req, res) {
 }
 
 function validarEjercicio_2(req, res) {
-    const cadena_entrada = req.body.entrada;
+    const cadena_entrada = req.body.entrada.trim();
+    const array_numero = new Array();
+    let total = 0;
 
-    
+    for(let index in cadena_entrada){
+        let caracter = cadena_entrada.charAt(index);
+
+        if(!isNaN(caracter)){
+            array_numero.push(caracter);
+            total ++;
+        }
+    }
+
+    let result = {
+        entrada : cadena_entrada,
+        numeros : array_numero,
+        total : total
+    }
+
+    res.send(JSON.stringify(result));
 }
 
 export const userController = {
