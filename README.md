@@ -10,3 +10,6 @@ por consola => npm run dev
 
 Para hacer peticiones al servidor copie la siguiente ruta
 => localhost:3000/api/prueba-tecnica/home
+
+Este es una pequeño programa desarrollado por Angel Misael Uscanga Lopez.
+La version de node Js es la => 16.18
