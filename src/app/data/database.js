@@ -1,14 +1,14 @@
 const dataBase = {
     personasRegistradas : [
         {
-            id: '23231',
+            id: '2321',
             nombre:'Angel Misael',
             apellidoPaterno:'Uscanga',
             apellidoMaterno:'Lopez',
-            fechaDeNacimiento:'30/08/1996'
+            fechaDeNacimiento: '30/08/1996'
         },
         {
-            id: '32334',
+            id: '3234',
             nombre:'Angel',
             apellidoPaterno:'Uscanga',
             apellidoMaterno:'Lopez',
@@ -22,14 +22,14 @@ const dataBase = {
             fechaDeNacimiento:'30/08/1999'
         },
         {
-            id: '230031',
+            id: '23001',
             nombre:'Misael',
             apellidoPaterno:'Uscanga',
             apellidoMaterno:'Guadalupe',
             fechaDeNacimiento:'30/11/1996'
         },
         {
-            id: '212131',
+            id: '21131',
             nombre:'Rafael',
             apellidoPaterno:'Uscanga',
             apellidoMaterno:'Lopez',

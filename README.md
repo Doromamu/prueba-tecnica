@@ -12,6 +12,13 @@ Si realizamos un sistema de un inventario para un supermercado desde 0, cuales s
 1.- Cuales son los datos que se necesitan guardar para cada producto.
 2.- Cuales son los datos o informacion de sus proveedores.
 3.- Si tienen una o mas sucursales o almacenes.
+3.1.- Si tienes mas sucursales, se debe preguntar la informacion sobre estas,
+      Ubicacion, numero del almacen, etc.
+4.- quienes tendran acceso a este sistema para definir los tipos de roles
+    de los usuarios dentro de este.
+5.- El presuspuesto que ellos tienen en mente para invertir en este sistema.
+6.- Cual seria el plazo o la fecha en la cual solicitarian este sistema ya en produccion,
+    ya que esto influye en el costo del sistema.
 
 Para ejecutar esta aplicacion debe ejecutar el siguiente comando
 por consola => npm run dev
