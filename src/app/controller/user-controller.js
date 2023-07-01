@@ -7,7 +7,8 @@ function getHomeUI(req, res) {
         res.status(200).render('index', ({
             data: null,
             navBarDir: 'components/nav-bar/nav-bar',
-            mainDir: 'components/main/home'
+            mainDir: 'components/main/home',
+            footerDir:'components/footer/footer'
         }))
     } else {
         res.status(400).send(JSON.stringify("Porfavor no intentes mandar mas query :)"))
@@ -20,7 +21,8 @@ function getEjercicio1UI(req, res) {
         res.status(200).render('index', ({
             data: null,
             navBarDir: 'components/nav-bar/nav-bar',
-            mainDir: 'components/main/ejercicio-1'
+            mainDir: 'components/main/ejercicio-1',
+            footerDir:'components/footer/footer'
         }))
     } else {
         res.status(400).send(JSON.stringify("Porfavor no intentes mandar mas query :)"))
@@ -33,7 +35,8 @@ function getEjercicio2UI(req, res) {
         res.status(200).render('index', ({
             data: null,
             navBarDir: 'components/nav-bar/nav-bar',
-            mainDir: 'components/main/ejercicio-2'
+            mainDir: 'components/main/ejercicio-2',
+            footerDir:'components/footer/footer'
         }))
     } else {
         res.status(400).send(JSON.stringify("Porfavor no intentes mandar mas query :)"))
@@ -47,7 +50,8 @@ function getCrudUI(req, res) {
         res.status(200).render('index', ({
             data: datos,
             navBarDir: 'components/nav-bar/nav-bar',
-            mainDir: 'components/main/crud'
+            mainDir: 'components/main/crud',
+            footerDir:'components/footer/footer'
         }))
     } else {
         res.status(400).send(JSON.stringify("Porfavor no intentes mandar mas query :)"))
@@ -60,7 +64,8 @@ function getRegirstroUI(req, res) {
         res.status(200).render('index', ({
             data: null,
             navBarDir: 'components/nav-bar/nav-bar',
-            mainDir: 'components/main/registro'
+            mainDir: 'components/main/registro',
+            footerDir:'components/footer/footer'
         }))
     } else {
         res.status(400).send(JSON.stringify("Porfavor no intentes mandar mas query :)"))
@@ -75,7 +80,8 @@ function getPersonaPorId(req, res) {
         res.status(200).render('index', ({
             data: datos,
             navBarDir: 'components/nav-bar/nav-bar',
-            mainDir: 'components/main/crud'
+            mainDir: 'components/main/crud',
+            footerDir:'components/footer/footer'
         }));
     } else {
         res.status(400).send(JSON.stringify(errList));
@@ -101,7 +107,8 @@ function ordenarXApellidoPaterno(req, res) {
         res.status(200).render('index', ({
             data: datos,
             navBarDir: 'components/nav-bar/nav-bar',
-            mainDir: 'components/main/crud'
+            mainDir: 'components/main/crud',
+            footerDir:'components/footer/footer'
         }));
     } else {
         res.status(400).send(JSON.stringify(errList));
@@ -116,7 +123,8 @@ function ordenarXApellidoMaterno(req, res) {
         res.status(200).render('index', ({
             data: datos,
             navBarDir: 'components/nav-bar/nav-bar',
-            mainDir: 'components/main/crud'
+            mainDir: 'components/main/crud',
+            footerDir:'components/footer/footer'
         }));
     } else {
         res.status(400).send(JSON.stringify(errList));
@@ -133,7 +141,8 @@ function ordenarXEdad(req, res) {
         res.status(200).render('index', ({
             data: datos,
             navBarDir: 'components/nav-bar/nav-bar',
-            mainDir: 'components/main/crud'
+            mainDir: 'components/main/crud',
+            footerDir:'components/footer/footer'
         }));
     } else {
         res.status(400).send(JSON.stringify(errList));
