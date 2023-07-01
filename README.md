@@ -13,3 +13,5 @@ Para hacer peticiones al servidor copie la siguiente ruta
 
 Este es una pequeño programa desarrollado por Angel Misael Uscanga Lopez.
 La version de node Js es la => 16.18
+
+Se utilizo validaciones en las peticiones HTTP Para mas seguridad :3

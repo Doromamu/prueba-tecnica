@@ -1,12 +1,16 @@
 import { validationResult } from "express-validator"
+import { accessData } from "../model/access-data/access-data";
 
 function getHomeUI(req, res) {
     const errList = validationResult(req);
     if (errList.isEmpty()) {
         res.render('index', ({
+            data:null,
             navBarDir: 'components/nav-bar/nav-bar',
             mainDir: 'components/main/home'
         }))
+    }else{
+        res.send(JSON.stringify("Porfavor no intentes mandar mas query :)"))
     }
 }
 
@@ -14,9 +18,12 @@ function getEjercicio1UI(req, res) {
     const errList = validationResult(req);
     if (errList.isEmpty()) {
         res.render('index', ({
+            data:null,
             navBarDir: 'components/nav-bar/nav-bar',
             mainDir: 'components/main/ejercicio-1'
         }))
+    }else{
+        res.send(JSON.stringify("Porfavor no intentes mandar mas query :)"))
     }
 }
 
@@ -24,9 +31,54 @@ function getEjercicio2UI(req, res) {
     const errList = validationResult(req);
     if (errList.isEmpty()) {
         res.render('index', ({
+            data:null,
             navBarDir: 'components/nav-bar/nav-bar',
             mainDir: 'components/main/ejercicio-2'
         }))
+    }else{
+        res.send(JSON.stringify("Porfavor no intentes mandar mas query :)"))
+    }
+}
+
+function getCrudUI(req,res){
+    const errList = validationResult(req);
+    if (errList.isEmpty()) {
+        let datos = accessData.selectAll();
+        res.render('index', ({
+            data:datos,
+            navBarDir: 'components/nav-bar/nav-bar',
+            mainDir: 'components/main/crud'
+        }))
+    }else{
+        res.send(JSON.stringify("Porfavor no intentes mandar mas query :)"))
+    }
+}
+
+function getRegirstroUI(req,res){
+    const errList = validationResult(req);
+    if (errList.isEmpty()) {
+        res.render('index', ({
+            data:null,
+            navBarDir: 'components/nav-bar/nav-bar',
+            mainDir: 'components/main/registro'
+        }))
+    }else{
+        res.send(JSON.stringify("Porfavor no intentes mandar mas query :)"))
+    }
+}
+
+function getPersonaPorId(req,res){
+    const errList = validationResult(req);
+    if (errList.isEmpty()) {
+        const id = req.body.entrada;
+        let datos = accessData.selectById(id);
+        res.render('index', ({
+            data:datos,
+            navBarDir: 'components/nav-bar/nav-bar',
+            mainDir: 'components/main/crud'
+        }))
+    }else{
+        res.send(JSON.stringify(errList));
     }
 }
 
@@ -91,6 +143,9 @@ export const userController = {
     getHomeUI,
     getEjercicio1UI,
     getEjercicio2UI,
+    getCrudUI,
+    getRegirstroUI,
+    getPersonaPorId,
     validarEjercicio_1,
     validarEjercicio_2
 }

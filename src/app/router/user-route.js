@@ -22,6 +22,18 @@ userRoute.get(
     userController.getEjercicio2UI
 );
 
+userRoute.get(
+    '/crud',
+    validationRule.noQuery,
+    userController.getCrudUI
+);
+
+userRoute.get(
+    '/registrar',
+    validationRule.noQuery,
+    userController.getRegirstroUI
+)
+
 userRoute.post(
     '/validar-ejercicio-1',
     userController.validarEjercicio_1
@@ -32,4 +44,9 @@ userRoute.post(
     userController.validarEjercicio_2
 )
 
+userRoute.post(
+    '/buscar-por-id',
+    validationRule.busquedaPorId,
+    userController.getPersonaPorId
+)
 export default userRoute;

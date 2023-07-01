@@ -17,6 +17,7 @@
 </head>
 
 <body class="container-flexd">
+  <% data %>
   <div class="row">
     <div class="col-12">
     <% navBarDir %>
@@ -26,7 +27,7 @@
   <div class="row">
     <div class="col-12">
     <% mainDir %>
-    <%- include(mainDir) %>
+    <%- include(mainDir,data) %>
     </div>
   </div>
 

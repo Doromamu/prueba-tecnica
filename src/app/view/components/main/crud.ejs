@@ -1,0 +1,55 @@
+<% data %>
+  <p class="h1">Este es el crud</p>
+  <div class="row">
+    <div class="col-4">
+      <a href="/api/prueba-tecnica/registrar" class="btn btn-primary" he>registrar</a>
+    </div>
+    <div class="col-4">
+      <div class="row">
+        <div class="col-5">
+          <form action="/api/prueba-tecnica/buscar-por-id" method="POST" novalidate>
+            <div class="mb-3">
+              <label for="entrada" class="form-label">Ingrese el id</label>
+              <input type="text" class="form-control" id="entrada" aria-describedby="emailHelp" name="entrada" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Buscar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <a href="/api/prueba-tecnica/crud" class="btn btn-primary" he>consultar todo</a>
+    </div>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">nombre</th>
+        <th scope="col">apellido paterno</th>
+        <th scope="col">apellido materno</th>
+        <th scope="col">fecha de nacimeinto</th>
+      </tr>
+    </thead>
+    <tbody id="cuerpo-tabla">
+      <% data.forEach(function(persona) { %>
+        <tr>
+          <th scope="row">
+            <%= persona.id%>
+          </th>
+          <td>
+            <%= persona.nombre%>
+          </td>
+          <td>
+            <%= persona.apellidoPaterno%>
+          </td>
+          <td>
+            <%= persona.apellidoMaterno%>
+          </td>
+          <td>
+            <%= persona.fechaDeNacimiento%>
+          </td>
+        </tr>
+        <% }); %>
+    </tbody>
+  </table>
