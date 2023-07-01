@@ -57,9 +57,21 @@ userRoute.post(
 )
 
 userRoute.get(
-    '/ordenar-apellido',
+    '/ordenar-apellido-paterno',
     validationRule.noQuery,
-    userController.ordenarXApellido
+    userController.ordenarXApellidoPaterno
+)
+
+userRoute.get(
+    '/ordenar-apellido-materno',
+    validationRule.noQuery,
+    userController.ordenarXApellidoMaterno
+)
+
+userRoute.get(
+    '/ordenar-edad',
+    validationRule.noQuery,
+    userController.ordenarXEdad
 )
 
 export default userRoute;

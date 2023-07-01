@@ -5,11 +5,11 @@ function getHomeUI(req, res) {
     const errList = validationResult(req);
     if (errList.isEmpty()) {
         res.status(200).render('index', ({
-            data:null,
+            data: null,
             navBarDir: 'components/nav-bar/nav-bar',
             mainDir: 'components/main/home'
         }))
-    }else{
+    } else {
         res.status(400).send(JSON.stringify("Porfavor no intentes mandar mas query :)"))
     }
 }
@@ -18,11 +18,11 @@ function getEjercicio1UI(req, res) {
     const errList = validationResult(req);
     if (errList.isEmpty()) {
         res.status(200).render('index', ({
-            data:null,
+            data: null,
             navBarDir: 'components/nav-bar/nav-bar',
             mainDir: 'components/main/ejercicio-1'
         }))
-    }else{
+    } else {
         res.status(400).send(JSON.stringify("Porfavor no intentes mandar mas query :)"))
     }
 }
@@ -31,79 +31,111 @@ function getEjercicio2UI(req, res) {
     const errList = validationResult(req);
     if (errList.isEmpty()) {
         res.status(200).render('index', ({
-            data:null,
+            data: null,
             navBarDir: 'components/nav-bar/nav-bar',
             mainDir: 'components/main/ejercicio-2'
         }))
-    }else{
+    } else {
         res.status(400).send(JSON.stringify("Porfavor no intentes mandar mas query :)"))
     }
 }
 
-function getCrudUI(req,res){
+function getCrudUI(req, res) {
     const errList = validationResult(req);
     if (errList.isEmpty()) {
         let datos = accessData.selectAll();
         res.status(200).render('index', ({
-            data:datos,
+            data: datos,
             navBarDir: 'components/nav-bar/nav-bar',
             mainDir: 'components/main/crud'
         }))
-    }else{
+    } else {
         res.status(400).send(JSON.stringify("Porfavor no intentes mandar mas query :)"))
     }
 }
 
-function getRegirstroUI(req,res){
+function getRegirstroUI(req, res) {
     const errList = validationResult(req);
     if (errList.isEmpty()) {
         res.status(200).render('index', ({
-            data:null,
+            data: null,
             navBarDir: 'components/nav-bar/nav-bar',
             mainDir: 'components/main/registro'
         }))
-    }else{
+    } else {
         res.status(400).send(JSON.stringify("Porfavor no intentes mandar mas query :)"))
     }
 }
 
-function getPersonaPorId(req,res){
+function getPersonaPorId(req, res) {
     const errList = validationResult(req);
     if (errList.isEmpty()) {
         const id = req.body.entrada;
         const datos = accessData.selectById(id);
         res.status(200).render('index', ({
-            data:datos,
+            data: datos,
             navBarDir: 'components/nav-bar/nav-bar',
             mainDir: 'components/main/crud'
         }));
-    }else{
+    } else {
         res.status(400).send(JSON.stringify(errList));
     }
 }
 
-function registrarPersona(req,res){
+function registrarPersona(req, res) {
     const errList = validationResult(req);
     if (errList.isEmpty()) {
         const persona = req.body;
         const datos = accessData.insert(persona);
         res.status(200).redirect('/api/prueba-tecnica/crud');
-    }else{
+    } else {
         res.status(400).send(JSON.stringify(errList));
     }
 }
 
-function ordenarXApellido(req,res){
+function ordenarXApellidoPaterno(req, res) {
     const errList = validationResult(req);
-    if(errList.isEmpty()){
+    if (errList.isEmpty()) {
         const listaDesordenada = accessData.selectAll();
         const datos = listaDesordenada.sort((a, b) => a.apellidoPaterno > b.apellidoPaterno ? 1 : -1)
         res.status(200).render('index', ({
-            data:datos,
+            data: datos,
             navBarDir: 'components/nav-bar/nav-bar',
             mainDir: 'components/main/crud'
         }));
-    }else{
+    } else {
+        res.status(400).send(JSON.stringify(errList));
+    }
+}
+
+function ordenarXApellidoMaterno(req, res) {
+    const errList = validationResult(req);
+    if (errList.isEmpty()) {
+        const listaDesordenada = accessData.selectAll();
+        const datos = listaDesordenada.sort((a, b) => a.apellidoMaterno > b.apellidoMaterno ? 1 : -1)
+        res.status(200).render('index', ({
+            data: datos,
+            navBarDir: 'components/nav-bar/nav-bar',
+            mainDir: 'components/main/crud'
+        }));
+    } else {
+        res.status(400).send(JSON.stringify(errList));
+    }
+}
+
+function ordenarXEdad(req, res) {
+    const errList = validationResult(req);
+    if (errList.isEmpty()) {
+        const listaDesordenada = accessData.selectAll();
+        const datos = listaDesordenada.sort((a, b) => 
+            new Date(a.fechaDeNacimiento).getDate > new Date(b.fechaDeNacimiento) ? 1 : -1
+        );
+        res.status(200).render('index', ({
+            data: datos,
+            navBarDir: 'components/nav-bar/nav-bar',
+            mainDir: 'components/main/crud'
+        }));
+    } else {
         res.status(400).send(JSON.stringify(errList));
     }
 }
@@ -146,19 +178,19 @@ function validarEjercicio_2(req, res) {
     const array_numero = new Array();
     let total = 0;
 
-    for(let index in cadena_entrada){
+    for (let index in cadena_entrada) {
         let caracter = cadena_entrada.charAt(index);
 
-        if(!isNaN(caracter)){
+        if (!isNaN(caracter)) {
             array_numero.push(caracter);
-            total ++;
+            total++;
         }
     }
 
     let result = {
-        entrada : cadena_entrada,
-        numeros : array_numero,
-        total : total
+        entrada: cadena_entrada,
+        numeros: array_numero,
+        total: total
     }
 
     res.send(JSON.stringify(result));
@@ -174,5 +206,7 @@ export const userController = {
     validarEjercicio_1,
     validarEjercicio_2,
     registrarPersona,
-    ordenarXApellido
+    ordenarXApellidoPaterno,
+    ordenarXApellidoMaterno,
+    ordenarXEdad
 }
