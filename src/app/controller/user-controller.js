@@ -4,39 +4,39 @@ import { accessData } from "../model/access-data/access-data";
 function getHomeUI(req, res) {
     const errList = validationResult(req);
     if (errList.isEmpty()) {
-        res.render('index', ({
+        res.status(200).render('index', ({
             data:null,
             navBarDir: 'components/nav-bar/nav-bar',
             mainDir: 'components/main/home'
         }))
     }else{
-        res.send(JSON.stringify("Porfavor no intentes mandar mas query :)"))
+        res.status(400).send(JSON.stringify("Porfavor no intentes mandar mas query :)"))
     }
 }
 
 function getEjercicio1UI(req, res) {
     const errList = validationResult(req);
     if (errList.isEmpty()) {
-        res.render('index', ({
+        res.status(200).render('index', ({
             data:null,
             navBarDir: 'components/nav-bar/nav-bar',
             mainDir: 'components/main/ejercicio-1'
         }))
     }else{
-        res.send(JSON.stringify("Porfavor no intentes mandar mas query :)"))
+        res.status(400).send(JSON.stringify("Porfavor no intentes mandar mas query :)"))
     }
 }
 
 function getEjercicio2UI(req, res) {
     const errList = validationResult(req);
     if (errList.isEmpty()) {
-        res.render('index', ({
+        res.status(200).render('index', ({
             data:null,
             navBarDir: 'components/nav-bar/nav-bar',
             mainDir: 'components/main/ejercicio-2'
         }))
     }else{
-        res.send(JSON.stringify("Porfavor no intentes mandar mas query :)"))
+        res.status(400).send(JSON.stringify("Porfavor no intentes mandar mas query :)"))
     }
 }
 
@@ -44,26 +44,26 @@ function getCrudUI(req,res){
     const errList = validationResult(req);
     if (errList.isEmpty()) {
         let datos = accessData.selectAll();
-        res.render('index', ({
+        res.status(200).render('index', ({
             data:datos,
             navBarDir: 'components/nav-bar/nav-bar',
             mainDir: 'components/main/crud'
         }))
     }else{
-        res.send(JSON.stringify("Porfavor no intentes mandar mas query :)"))
+        res.status(400).send(JSON.stringify("Porfavor no intentes mandar mas query :)"))
     }
 }
 
 function getRegirstroUI(req,res){
     const errList = validationResult(req);
     if (errList.isEmpty()) {
-        res.render('index', ({
+        res.status(200).render('index', ({
             data:null,
             navBarDir: 'components/nav-bar/nav-bar',
             mainDir: 'components/main/registro'
         }))
     }else{
-        res.send(JSON.stringify("Porfavor no intentes mandar mas query :)"))
+        res.status(400).send(JSON.stringify("Porfavor no intentes mandar mas query :)"))
     }
 }
 
@@ -71,14 +71,40 @@ function getPersonaPorId(req,res){
     const errList = validationResult(req);
     if (errList.isEmpty()) {
         const id = req.body.entrada;
-        let datos = accessData.selectById(id);
-        res.render('index', ({
+        const datos = accessData.selectById(id);
+        res.status(200).render('index', ({
             data:datos,
             navBarDir: 'components/nav-bar/nav-bar',
             mainDir: 'components/main/crud'
-        }))
+        }));
     }else{
-        res.send(JSON.stringify(errList));
+        res.status(400).send(JSON.stringify(errList));
+    }
+}
+
+function registrarPersona(req,res){
+    const errList = validationResult(req);
+    if (errList.isEmpty()) {
+        const persona = req.body;
+        const datos = accessData.insert(persona);
+        res.status(200).redirect('/api/prueba-tecnica/crud');
+    }else{
+        res.status(400).send(JSON.stringify(errList));
+    }
+}
+
+function ordenarXApellido(req,res){
+    const errList = validationResult(req);
+    if(errList.isEmpty()){
+        const listaDesordenada = accessData.selectAll();
+        const datos = listaDesordenada.sort((a, b) => a.apellidoPaterno > b.apellidoPaterno ? 1 : -1)
+        res.status(200).render('index', ({
+            data:datos,
+            navBarDir: 'components/nav-bar/nav-bar',
+            mainDir: 'components/main/crud'
+        }));
+    }else{
+        res.status(400).send(JSON.stringify(errList));
     }
 }
 
@@ -97,7 +123,6 @@ function validarEjercicio_1(req, res) {
             if (array_fecha.length == 3) {
                 let es_valido = parseInt(array_fecha[0]) <= 30 &&
                     array_fecha[1] <= 12 ? true : false;
-
                 if (es_valido)
                     array_validos.push(fecha);
                 else
@@ -147,5 +172,7 @@ export const userController = {
     getRegirstroUI,
     getPersonaPorId,
     validarEjercicio_1,
-    validarEjercicio_2
+    validarEjercicio_2,
+    registrarPersona,
+    ordenarXApellido
 }

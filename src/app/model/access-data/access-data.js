@@ -11,7 +11,13 @@ function selectById(_id){
     return persona;
 }
 
+function insert(nuevaPersona){
+    const result = dataBase.personasRegistradas;
+    result.push(nuevaPersona);
+}
+
 export const accessData = {
     selectAll,
-    selectById
+    selectById,
+    insert
 }

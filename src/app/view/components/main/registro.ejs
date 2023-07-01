@@ -1,0 +1,35 @@
+<div class="card">
+  <div class="card-body">
+    <form action="/api/prueba-tecnica/registrar-persona" method="POST" novalidate>
+      <div class="mb-3">
+        <label for="inputId" class="form-label">Id:</label>
+        <input type="text" class="form-control" id="inputId" name="id">
+      </div>
+      <div class="mb-3">
+        <label for="inputNombre" class="form-label">Nombre:</label>
+        <input type="text" class="form-control" id="inputNombre" name="nombre">
+      </div>
+      <div class="mb-3">
+        <label for="inputApellidoPaterno" class="form-label">Apellido Paterno:</label>
+        <input type="text" class="form-control" id="inputApellidoPaterno" name="apellidoPaterno">
+      </div>
+      <div class="mb-3">
+        <label for="inputApellidoMaterno" class="form-label">Apellido Materno:</label>
+        <input type="text" class="form-control" id="inputApellidoMaterno" name="apellidoMaterno">
+      </div>
+      <div class="mb-3">
+        <label for="inputFechaNacimiento" class="form-label">Fecha de nacimiento</label>
+        <input type="date" class="form-control" id="inputFechaNacimiento" name="fechaNacimiento">
+      </div>
+
+      <div class="row">
+        <div class="col-6">
+          <button type="submit" class="btn btn-primary">registrar</button>
+        </div>
+        <div class="col-6">
+          <a class="btn btn-danger" href="/api/prueba-tecnica/crud">Cancelar</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

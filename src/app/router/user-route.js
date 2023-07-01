@@ -46,7 +46,20 @@ userRoute.post(
 
 userRoute.post(
     '/buscar-por-id',
-    validationRule.busquedaPorId,
+    validationRule.soloNumeros,
     userController.getPersonaPorId
 )
+
+userRoute.post(
+    '/registrar-persona',
+    validationRule.registroPersona,
+    userController.registrarPersona
+)
+
+userRoute.get(
+    '/ordenar-apellido',
+    validationRule.noQuery,
+    userController.ordenarXApellido
+)
+
 export default userRoute;

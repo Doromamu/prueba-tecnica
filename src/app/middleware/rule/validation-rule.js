@@ -16,10 +16,48 @@ const noQuery = [
   ];
 
 const registroPersona = [
+  body('id').
+  trim().
+  isNumeric().
+  custom(id => {
+    if(id.length >= 7)
+      return false;
+    return true;
+  }).withMessage('El parametro id es erroneo'),
 
+  body('nombre').
+  trim().
+  isAlpha().
+  custom(nombre => {
+    if(nombre.length >= 14)
+      return false;
+    return true;
+  }).withMessage('El parametro del nombre es erroneo'),
+
+  body('apellidoPaterno').
+  trim().
+  isAlpha().
+  custom(apellidoPaterno => {
+    if(apellidoPaterno.length >= 14)
+      return false;
+    return true;
+  }).withMessage('El parametro del apellido paterno es erroneo'),
+
+  body('apellidoMaterno').
+  trim().
+  isAlpha().
+  custom(apellidoMaterno => {
+    if(apellidoMaterno.length >= 14)
+      return false;
+    return true;
+  }).withMessage('El parametro del apellido materno es erroneo'),
+
+  body('fechaNacimiento').
+  isDate().
+  withMessage('El parametro de fecha de nacimiento paterno es erroneo')
 ];
 
-const busquedaPorId = [
+const soloNumeros = [
   body('entrada').
   trim().
   isNumeric().
@@ -33,5 +71,5 @@ const busquedaPorId = [
 export const validationRule = {
     noQuery,
     registroPersona,
-    busquedaPorId
+    soloNumeros
 }
