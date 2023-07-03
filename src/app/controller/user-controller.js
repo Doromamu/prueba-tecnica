@@ -1,5 +1,6 @@
 import { validationResult } from "express-validator"
 import { accessData } from "../model/access-data/access-data";
+import path from 'node:path';
 
 function getHomeUI(req, res) {
     const errList = validationResult(req);
@@ -7,11 +8,23 @@ function getHomeUI(req, res) {
         res.status(200).render('index', ({
             data: null,
             navBarDir: 'components/nav-bar/nav-bar',
+            listOptionDir :'components/nav-bar/lista-opciones',
             mainDir: 'components/main/home',
             footerDir:'components/footer/footer'
         }))
     } else {
-        res.status(400).send(JSON.stringify("Porfavor no intentes mandar mas query :)"))
+        res.status(400).redirect('/error-400');
+    }
+}
+
+function descargarCV(req,res){
+    const errList = validationResult(req);
+    if (errList.isEmpty()){
+        const direccionArchivo = path.resolve('src/app/public/doc') + 
+        '/CVAngelMisaelUscangaLopez (2).pdf';
+        res.download(direccionArchivo);        
+    }else{
+        res.status(400).redirect('/error-400');
     }
 }
 
@@ -21,11 +34,12 @@ function getEjercicio1UI(req, res) {
         res.status(200).render('index', ({
             data: null,
             navBarDir: 'components/nav-bar/nav-bar',
+            listOptionDir :'components/nav-bar/lista-opciones',
             mainDir: 'components/main/ejercicio-1',
             footerDir:'components/footer/footer'
         }))
     } else {
-        res.status(400).send(JSON.stringify("Porfavor no intentes mandar mas query :)"))
+        res.status(400).redirect('/error-400');
     }
 }
 
@@ -35,11 +49,12 @@ function getEjercicio2UI(req, res) {
         res.status(200).render('index', ({
             data: null,
             navBarDir: 'components/nav-bar/nav-bar',
+            listOptionDir :'components/nav-bar/lista-opciones',
             mainDir: 'components/main/ejercicio-2',
             footerDir:'components/footer/footer'
         }))
     } else {
-        res.status(400).send(JSON.stringify("Porfavor no intentes mandar mas query :)"))
+        res.status(400).redirect('/error-400');
     }
 }
 
@@ -50,11 +65,12 @@ function getCrudUI(req, res) {
         res.status(200).render('index', ({
             data: datos,
             navBarDir: 'components/nav-bar/nav-bar',
+            listOptionDir :'components/nav-bar/lista-opciones',
             mainDir: 'components/main/crud',
             footerDir:'components/footer/footer'
         }))
     } else {
-        res.status(400).send(JSON.stringify("Porfavor no intentes mandar mas query :)"))
+        res.status(400).redirect('/error-400');
     }
 }
 
@@ -64,11 +80,12 @@ function getRegirstroUI(req, res) {
         res.status(200).render('index', ({
             data: null,
             navBarDir: 'components/nav-bar/nav-bar',
+            listOptionDir :'components/nav-bar/lista-opciones',
             mainDir: 'components/main/registro',
             footerDir:'components/footer/footer'
         }))
     } else {
-        res.status(400).send(JSON.stringify("Porfavor no intentes mandar mas query :)"))
+        res.status(400).redirect('/error-400');
     }
 }
 
@@ -80,6 +97,7 @@ function getPersonaPorId(req, res) {
         res.status(200).render('index', ({
             data: datos,
             navBarDir: 'components/nav-bar/nav-bar',
+            listOptionDir :'components/nav-bar/lista-opciones',
             mainDir: 'components/main/crud',
             footerDir:'components/footer/footer'
         }));
@@ -107,6 +125,7 @@ function ordenarXApellidoPaterno(req, res) {
         res.status(200).render('index', ({
             data: datos,
             navBarDir: 'components/nav-bar/nav-bar',
+            listOptionDir :'components/nav-bar/lista-opciones',
             mainDir: 'components/main/crud',
             footerDir:'components/footer/footer'
         }));
@@ -123,6 +142,7 @@ function ordenarXApellidoMaterno(req, res) {
         res.status(200).render('index', ({
             data: datos,
             navBarDir: 'components/nav-bar/nav-bar',
+            listOptionDir :'components/nav-bar/lista-opciones',
             mainDir: 'components/main/crud',
             footerDir:'components/footer/footer'
         }));
@@ -141,6 +161,7 @@ function ordenarXEdad(req, res) {
         res.status(200).render('index', ({
             data: datos,
             navBarDir: 'components/nav-bar/nav-bar',
+            listOptionDir :'components/nav-bar/lista-opciones',
             mainDir: 'components/main/crud',
             footerDir:'components/footer/footer'
         }));
@@ -217,5 +238,6 @@ export const userController = {
     registrarPersona,
     ordenarXApellidoPaterno,
     ordenarXApellidoMaterno,
-    ordenarXEdad
+    ordenarXEdad,
+    descargarCV
 }

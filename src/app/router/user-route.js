@@ -74,4 +74,10 @@ userRoute.get(
     userController.ordenarXEdad
 )
 
+userRoute.get(
+    '/descargar-cv',
+    validationRule.noQuery,
+    userController.descargarCV
+)
+
 export default userRoute;

@@ -3,6 +3,7 @@ import { query , body , header } from "express-validator";
 //Reglas para validar tipo de datos antes de llegar
 //A la capa de aplicacion :)
 
+//Regla que inpide que manden query
 const noQuery = [
     query().
     custom(value => {
@@ -20,7 +21,7 @@ const registroPersona = [
   trim().
   isNumeric().
   custom(id => {
-    if(id.length >= 7)
+    if(id.length >= 7) //Que el id sea menos de 7 caracteres
       return false;
     return true;
   }).withMessage('El parametro id es erroneo'),
@@ -29,7 +30,7 @@ const registroPersona = [
   trim().
   isAlpha().
   custom(nombre => {
-    if(nombre.length >= 14)
+    if(nombre.length >= 14) //Que el nombre sea menos de 14 caracteres
       return false;
     return true;
   }).withMessage('El parametro del nombre es erroneo'),
@@ -38,7 +39,7 @@ const registroPersona = [
   trim().
   isAlpha().
   custom(apellidoPaterno => {
-    if(apellidoPaterno.length >= 14)
+    if(apellidoPaterno.length >= 14) //Que este campo tenga menos de 14 caracteres
       return false;
     return true;
   }).withMessage('El parametro del apellido paterno es erroneo'),
@@ -47,7 +48,7 @@ const registroPersona = [
   trim().
   isAlpha().
   custom(apellidoMaterno => {
-    if(apellidoMaterno.length >= 14)
+    if(apellidoMaterno.length >= 14) //Que este campo tenga menos de 14 caracteres
       return false;
     return true;
   }).withMessage('El parametro del apellido materno es erroneo'),
@@ -62,7 +63,7 @@ const soloNumeros = [
   trim().
   isNumeric().
   custom(id => {
-    if(id.length >= 6)
+    if(id.length >= 7) //Que este campo tenga menos de 7 caracteres
       return false;
     return true;
   }).withMessage('Este valor no es valido :(')

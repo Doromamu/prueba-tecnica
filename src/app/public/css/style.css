@@ -1,0 +1,33 @@
+/***********Clases para menu desplegable***********/
+.dropdown {
+	position: relative;
+	display: inline-block;
+}
+
+.dropdown-item {
+	color: var(--color-2);
+	display: block;
+}
+
+.dropdown-item:hover {
+	color: #e0d4d4;
+	background-color: var(--bs-gray-700);
+}
+
+.text-justify{
+	text-align: justify;
+}
+
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: var(--color-1);
+	min-width: 18.75rem;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	z-index: 1;
+    background-color: #bdb9b9cc;
+}
+
+.dropdown:hover .dropdown-content {
+	display: block;
+}

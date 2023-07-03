@@ -1,28 +1,17 @@
-<nav class="navbar bg-body-tertiary">
-  <div class="container-fluid">
-    <div class="col-12">
-      <button class="navbar-brand btn btn-outline-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#mi-offcanvas" aria-controls="mi-offcanvas">
-        <i class="fa-regular fa-compass fa-xl"></i>
-        Navegación
-      </button>
-    </div>
-  </div>
-</nav>
-
-
-
-<div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="mi-offcanvas"
-  aria-labelledby="offcanvasWithBothOptionsLabel">
-  <div class="offcanvas-header">
-    <span class="offcanvas-title h5 offset-3" id="offcanvasWithBothOptionsLabel">Menu de Ejercicios</span>
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body">
-    <div class="list-group text-center">
-      <a href="/api/prueba-tecnica/home" class="list-group-item list-group-item-action">Home</a>
-        <a href="/api/prueba-tecnica/ejercicio-1" class="list-group-item list-group-item-action">Ejercicio 1</a>
-        <a href="/api/prueba-tecnica/ejercicio-2" class="list-group-item list-group-item-action">Ejercicio 2</a>
-        <a href="/api/prueba-tecnica/crud" class="list-group-item list-group-item-action">Crud</a>
-      </div>
-  </div>
+<div class="container-fluid">
+  <button class="navbar-brand btn btn-outline-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#mi-offcanvas" aria-controls="mi-offcanvas">
+    <i class="fa-regular fa-compass fa-xl"></i>
+    Navegación
+  </button>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mi-nav-bar"
+    aria-controls="mi-nav-bar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse ms-3" id="mi-nav-bar">
+    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+      <li class="nav-item mt-2">
+        <a class="nav-link btn btn-danger" href="/api/prueba-tecnica/descargar-cv">Decargar CV</a>
+      </li>
+    </ul>
+</div>
 </div>

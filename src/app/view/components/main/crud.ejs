@@ -1,68 +1,74 @@
 <% data %>
-  <p class="h1">Este es el crud</p>
+  <p class="h1 text-center mt-2">Este es el crud</p>
   <div class="container">
     <div class="row">
-      <div class="col-4">
-        <div class="row">
-          <div class="col-12">
-            <a href="/api/prueba-tecnica/registrar" class="btn btn-primary">registrar</a>
-          </div>
-        </div>
-        <div class="row mt-2">
-          <div class="col-12">
-            <a href="/api/prueba-tecnica/ordenar-apellido-paterno" class="btn btn-primary">ordenar por apellido paterno</a>
-            <a href="/api/prueba-tecnica/ordenar-apellido-materno" class="btn btn-primary mt-2">ordenar por apellido materno</a>
+      <div class="col-12">
+        <div class="dropdown btn btn-primary">
+          Opciones <i class="fa-solid fa-list fa-xl"></i>
+          <div class="dropdown-content rounded border border-4">
+            <div class="row">
+              <div class="col-lg-12">
+                <a href="/api/prueba-tecnica/registrar" class="nav-item text-center rounded dropdown-item">Registrar</a>
+                <a href="/api/prueba-tecnica/crud" class="nav-item text-center rounded dropdown-item">Consultar todo</a>
+                <a class="nav-item text-center rounded dropdown-item" type="button" data-bs-toggle="offcanvas" data-bs-target="#mi-offcanvas-2" aria-controls="mi-offcanvas-2">Consultar por Id</a>
+                <a href="/api/prueba-tecnica/ordenar-apellido-paterno"
+                  class="nav-item text-center rounded dropdown-item">Ordenar apellido Paterno</a>
+                <a href="/api/prueba-tecnica/ordenar-apellido-materno"
+                  class="nav-item text-center rounded dropdown-item">Ordenar apellido Materno</a>
+                <a href="/api/prueba-tecnica/ordenar-edad" class="nav-item text-center rounded dropdown-item">Ordenar
+                  por Edad</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="col-4">
-        <div class="row">
-          <div class="col-5">
-            <form action="/api/prueba-tecnica/buscar-por-id" method="POST" novalidate>
+    </div>
+  </div>
+
+
+  <!--
+    <form action="/api/prueba-tecnica/buscar-por-id" method="POST" novalidate>
               <div class="mb-3">
                 <label for="entrada" class="form-label">Ingrese el id</label>
                 <input type="text" class="form-control" id="entrada" aria-describedby="emailHelp" name="entrada" required>
               </div>
               <button type="submit" class="btn btn-primary">Buscar</button>
             </form>
-          </div>
-        </div>
-      </div>
-      <div class="col-4">
-        <a href="/api/prueba-tecnica/crud" class="btn btn-primary" >consultar todo</a>
-        <a href="/api/prueba-tecnica/ordenar-edad" class="btn btn-primary">ordenar por edad</a>
-      </div>
+  -->
+
+  <div class="card mt-3">
+    <div class="card-body">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">nombre</th>
+            <th scope="col">apellido paterno</th>
+            <th scope="col">apellido materno</th>
+            <th scope="col">fecha de nacimeinto</th>
+          </tr>
+        </thead>
+        <tbody id="cuerpo-tabla">
+          <% data.forEach(function(persona) { %>
+            <tr>
+              <th scope="row">
+                <%= persona.id%>
+              </th>
+              <td>
+                <%= persona.nombre%>
+              </td>
+              <td>
+                <%= persona.apellidoPaterno%>
+              </td>
+              <td>
+                <%= persona.apellidoMaterno%>
+              </td>
+              <td>
+                <%= persona.fechaDeNacimiento%>
+              </td>
+            </tr>
+            <% }); %>
+        </tbody>
+      </table>
     </div>
   </div>
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">id</th>
-        <th scope="col">nombre</th>
-        <th scope="col">apellido paterno</th>
-        <th scope="col">apellido materno</th>
-        <th scope="col">fecha de nacimeinto</th>
-      </tr>
-    </thead>
-    <tbody id="cuerpo-tabla">
-      <% data.forEach(function(persona) { %>
-        <tr>
-          <th scope="row">
-            <%= persona.id%>
-          </th>
-          <td>
-            <%= persona.nombre%>
-          </td>
-          <td>
-            <%= persona.apellidoPaterno%>
-          </td>
-          <td>
-            <%= persona.apellidoMaterno%>
-          </td>
-          <td>
-            <%= persona.fechaDeNacimiento%>
-          </td>
-        </tr>
-        <% }); %>
-    </tbody>
-  </table>

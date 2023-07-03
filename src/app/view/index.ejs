@@ -9,6 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia&effect=fire">
   <link rel="stylesheet" type="text/css" href="/css/bootstrap/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
   <link rel="shortcut icon" href="/img/logoTec.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
     integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
@@ -16,14 +17,17 @@
   <title>Prueba Tecnica</title>
 </head>
 
-<body class="container-flexd">
+<body>
   <% data %>
-  <div class="row">
-    <div class="col-12">
-    <% navBarDir %>
-    <%- include(navBarDir) %>
-    </div>
-  </div>
+  <header>
+    <nav class="navbar navbar-expand-lg bg-light border-bottom border-primary border-5">
+      <% navBarDir %>
+      <%- include(navBarDir) %>
+    </nav>
+    <% listOptionDir %>
+    <%- include(listOptionDir) %>
+  </header>
+  
   <div class="container">
     <div class="row">
       <div class="col-12">
