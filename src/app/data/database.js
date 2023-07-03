@@ -1,3 +1,4 @@
+//Se cargan los datos en memoria
 const dataBase = {
     personasRegistradas : [
         {
@@ -5,42 +6,42 @@ const dataBase = {
             nombre:'Angel Misael',
             apellidoPaterno:'Uscanga',
             apellidoMaterno:'Lopez',
-            fechaDeNacimiento: '30/08/1996'
+            fechaDeNacimiento: new Date(1996,8,30)
         },
         {
             id: '3234',
             nombre:'Angel',
             apellidoPaterno:'Uscanga',
             apellidoMaterno:'Lopez',
-            fechaDeNacimiento:'30/08/1996'
+            fechaDeNacimiento:new Date(1996,5,10)
         },
         {
             id: '23231',
             nombre:'Angel Misael',
             apellidoPaterno:'Cruz',
             apellidoMaterno:'Lopez',
-            fechaDeNacimiento:'30/08/1999'
+            fechaDeNacimiento:new Date(1995,8,30)
         },
         {
             id: '23001',
             nombre:'Misael',
             apellidoPaterno:'Uscanga',
             apellidoMaterno:'Guadalupe',
-            fechaDeNacimiento:'30/11/1996'
+            fechaDeNacimiento:new Date(1996,10,30)
         },
         {
             id: '21131',
             nombre:'Rafael',
             apellidoPaterno:'Uscanga',
             apellidoMaterno:'Lopez',
-            fechaDeNacimiento:'21/08/1992'
+            fechaDeNacimiento:new Date(1992,8,30)
         },
         {
             id: '43341',
             nombre:'Maria',
             apellidoPaterno:'Ruiz',
             apellidoMaterno:'Lopez',
-            fechaDeNacimiento:'30/08/1996'
+            fechaDeNacimiento:new Date(1996,8,20)
         },
     ]
 }

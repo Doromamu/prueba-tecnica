@@ -2,6 +2,8 @@ import { validationResult } from "express-validator"
 import { accessData } from "../model/access-data/access-data";
 import path from 'node:path';
 
+
+//**************Funciones para el renderizado de las vistas****************/
 function getHomeUI(req, res) {
     const errList = validationResult(req);
     if (errList.isEmpty()) {
@@ -13,17 +15,6 @@ function getHomeUI(req, res) {
             footerDir:'components/footer/footer'
         }))
     } else {
-        res.status(400).redirect('/error-400');
-    }
-}
-
-function descargarCV(req,res){
-    const errList = validationResult(req);
-    if (errList.isEmpty()){
-        const direccionArchivo = path.resolve('src/app/public/doc') + 
-        '/CVAngelMisaelUscangaLopez (2).pdf';
-        res.download(direccionArchivo);        
-    }else{
         res.status(400).redirect('/error-400');
     }
 }
@@ -61,7 +52,7 @@ function getEjercicio2UI(req, res) {
 function getCrudUI(req, res) {
     const errList = validationResult(req);
     if (errList.isEmpty()) {
-        let datos = accessData.selectAll();
+        let datos = accessData.selectAll()
         res.status(200).render('index', ({
             data: datos,
             navBarDir: 'components/nav-bar/nav-bar',
@@ -89,6 +80,8 @@ function getRegirstroUI(req, res) {
     }
 }
 
+//*********************************************************/
+
 function getPersonaPorId(req, res) {
     const errList = validationResult(req);
     if (errList.isEmpty()) {
@@ -106,10 +99,22 @@ function getPersonaPorId(req, res) {
     }
 }
 
+function descargarCV(req,res){
+    const errList = validationResult(req);
+    if (errList.isEmpty()){
+        const direccionArchivo = path.resolve('src/app/public/doc') + 
+        '/CVAngelMisaelUscangaLopez (2).pdf';
+        res.download(direccionArchivo);        
+    }else{
+        res.status(400).redirect('/error-400');
+    }
+}
+
 function registrarPersona(req, res) {
     const errList = validationResult(req);
     if (errList.isEmpty()) {
         const persona = req.body;
+        persona.fechaNacimiento = new Date(req.body.fechaDeNacimiento);
         const datos = accessData.insert(persona);
         res.status(200).redirect('/api/prueba-tecnica/crud');
     } else {
@@ -117,6 +122,7 @@ function registrarPersona(req, res) {
     }
 }
 
+//*****************Funciones que ordenan las lista**********************/
 function ordenarXApellidoPaterno(req, res) {
     const errList = validationResult(req);
     if (errList.isEmpty()) {
@@ -132,7 +138,7 @@ function ordenarXApellidoPaterno(req, res) {
     } else {
         res.status(400).send(JSON.stringify(errList));
     }
-}
+} 
 
 function ordenarXApellidoMaterno(req, res) {
     const errList = validationResult(req);
@@ -156,7 +162,7 @@ function ordenarXEdad(req, res) {
     if (errList.isEmpty()) {
         const listaDesordenada = accessData.selectAll();
         const datos = listaDesordenada.sort((a, b) => 
-            new Date(a.fechaDeNacimiento).getDate > new Date(b.fechaDeNacimiento) ? 1 : -1
+            a.fechaDeNacimiento > b.fechaDeNacimiento ? 1 : -1
         );
         res.status(200).render('index', ({
             data: datos,
@@ -170,6 +176,8 @@ function ordenarXEdad(req, res) {
     }
 }
 
+/***********************************************************/
+
 function validarEjercicio_1(req, res) {
     const cadenaEntrada = req.body.entrada;
     const array = cadenaEntrada.split(',');
@@ -179,7 +187,7 @@ function validarEjercicio_1(req, res) {
     console.log(`El arreglo es: ${array}`);
     array.forEach(element => {
         let fecha = element.trim();
-
+        //La validacion es solo para los dias y meses.
         if (fecha.length == 10) {
             let array_fecha = fecha.split('/');
             if (array_fecha.length == 3) {
@@ -195,6 +203,7 @@ function validarEjercicio_1(req, res) {
             array_invalidos.push(fecha);
 
     });
+    //Se le envia al front un array con las repuestas
     const result = {
         entrda: array,
         valoresInvalidor: array_invalidos,
@@ -216,7 +225,7 @@ function validarEjercicio_2(req, res) {
             total++;
         }
     }
-
+    //Se le envia al front un array con las repuestas
     let result = {
         entrada: cadena_entrada,
         numeros: array_numero,
@@ -226,6 +235,7 @@ function validarEjercicio_2(req, res) {
     res.send(JSON.stringify(result));
 }
 
+//Tpodas las funciones del control de usuarios.
 export const userController = {
     getHomeUI,
     getEjercicio1UI,

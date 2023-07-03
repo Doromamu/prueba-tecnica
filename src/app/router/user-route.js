@@ -4,6 +4,7 @@ import { validationRule } from "../middleware/rule/validation-rule";
 
 const userRoute = Router();
 
+// Metodos tipo get
 userRoute.get(
     '/home',
     validationRule.noQuery,
@@ -34,28 +35,6 @@ userRoute.get(
     userController.getRegirstroUI
 )
 
-userRoute.post(
-    '/validar-ejercicio-1',
-    userController.validarEjercicio_1
-)
-
-userRoute.post(
-    '/validar-ejercicio-2',
-    userController.validarEjercicio_2
-)
-
-userRoute.post(
-    '/buscar-por-id',
-    validationRule.soloNumeros,
-    userController.getPersonaPorId
-)
-
-userRoute.post(
-    '/registrar-persona',
-    validationRule.registroPersona,
-    userController.registrarPersona
-)
-
 userRoute.get(
     '/ordenar-apellido-paterno',
     validationRule.noQuery,
@@ -79,5 +58,30 @@ userRoute.get(
     validationRule.noQuery,
     userController.descargarCV
 )
+
+//Metodos tipo post
+
+userRoute.post(
+    '/validar-ejercicio-1',
+    userController.validarEjercicio_1
+)
+
+userRoute.post(
+    '/validar-ejercicio-2',
+    userController.validarEjercicio_2
+)
+
+userRoute.post(
+    '/buscar-por-id',
+    validationRule.soloNumeros,
+    userController.getPersonaPorId
+)
+
+userRoute.post(
+    '/registrar-persona',
+    validationRule.registroPersona,
+    userController.registrarPersona
+)
+
 
 export default userRoute;

@@ -53,7 +53,7 @@ const registroPersona = [
     return true;
   }).withMessage('El parametro del apellido materno es erroneo'),
 
-  body('fechaNacimiento').
+  body('fechaDeNacimiento').
   isDate().
   withMessage('El parametro de fecha de nacimiento paterno es erroneo')
 ];

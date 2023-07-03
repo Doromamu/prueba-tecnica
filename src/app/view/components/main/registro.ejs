@@ -1,29 +1,29 @@
 <div class="card mt-5">
   <div class="card-body">
-    <form action="/api/prueba-tecnica/registrar-persona" method="POST" novalidate>
+    <form action="/api/prueba-tecnica/registrar-persona" method="POST">
       <div class="mb-3">
         <label for="inputId" class="form-label">Id:</label>
-        <input type="text" class="form-control" id="inputId" name="id">
+        <input type="text" class="form-control" id="inputId" name="id" required>
         <p class="text-muted">Igrese una cadenar con puros numeros y menos de 7 digitos</p>
       </div>
       <div class="mb-3">
         <label for="inputNombre" class="form-label">Nombre:</label>
-        <input type="text" class="form-control" id="inputNombre" name="nombre">
+        <input type="text" class="form-control" id="inputNombre" name="nombre" required>
         <p class="text-muted">Igrese una cadenar con puras letras y menos de 14 digitos</p>
       </div>
       <div class="mb-3">
         <label for="inputApellidoPaterno" class="form-label">Apellido Paterno:</label>
-        <input type="text" class="form-control" id="inputApellidoPaterno" name="apellidoPaterno">
+        <input type="text" class="form-control" id="inputApellidoPaterno" name="apellidoPaterno" required>
         <p class="text-muted">Igrese una cadenar con puras letras y menos de 14 digitos</p>
       </div>
       <div class="mb-3">
         <label for="inputApellidoMaterno" class="form-label">Apellido Materno:</label>
-        <input type="text" class="form-control" id="inputApellidoMaterno" name="apellidoMaterno">
+        <input type="text" class="form-control" id="inputApellidoMaterno" name="apellidoMaterno" required>
         <p class="text-muted">Igrese una cadenar con puras letras y menos de 14 digitos</p>
       </div>
       <div class="mb-3">
         <label for="inputFechaNacimiento" class="form-label">Fecha de nacimiento</label>
-        <input type="date" class="form-control" id="inputFechaNacimiento" name="fechaNacimiento">
+        <input type="date" class="form-control" id="inputFechaNacimiento" name="fechaDeNacimiento" required>
       </div>
 
       <div class="row">

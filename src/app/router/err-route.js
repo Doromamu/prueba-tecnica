@@ -4,7 +4,9 @@ import { errController } from "../controller/err-controller";
 
 const errRoute = Router();
 
-errRoute.get(
+//Se establece una ruta por defecto.
+//En caso que el usuario ingrese una ruta mal
+errRoute.use(
     '/',
     validationRule.noQuery,
     errController.error404

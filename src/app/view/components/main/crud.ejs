@@ -10,7 +10,8 @@
               <div class="col-lg-12">
                 <a href="/api/prueba-tecnica/registrar" class="nav-item text-center rounded dropdown-item">Registrar</a>
                 <a href="/api/prueba-tecnica/crud" class="nav-item text-center rounded dropdown-item">Consultar todo</a>
-                <a class="nav-item text-center rounded dropdown-item" type="button" data-bs-toggle="offcanvas" data-bs-target="#mi-offcanvas-2" aria-controls="mi-offcanvas-2">Consultar por Id</a>
+                <a class="nav-item text-center rounded dropdown-item" type="button" data-bs-toggle="offcanvas"
+                  data-bs-target="#mi-offcanvas-2" aria-controls="mi-offcanvas-2">Consultar por Id</a>
                 <a href="/api/prueba-tecnica/ordenar-apellido-paterno"
                   class="nav-item text-center rounded dropdown-item">Ordenar apellido Paterno</a>
                 <a href="/api/prueba-tecnica/ordenar-apellido-materno"
@@ -24,18 +25,6 @@
       </div>
     </div>
   </div>
-
-
-  <!--
-    <form action="/api/prueba-tecnica/buscar-por-id" method="POST" novalidate>
-              <div class="mb-3">
-                <label for="entrada" class="form-label">Ingrese el id</label>
-                <input type="text" class="form-control" id="entrada" aria-describedby="emailHelp" name="entrada" required>
-              </div>
-              <button type="submit" class="btn btn-primary">Buscar</button>
-            </form>
-  -->
-
   <div class="card mt-3">
     <div class="card-body">
       <table class="table">
@@ -49,6 +38,7 @@
           </tr>
         </thead>
         <tbody id="cuerpo-tabla">
+          <!--Se itera para imprimir los datos-->
           <% data.forEach(function(persona) { %>
             <tr>
               <th scope="row">

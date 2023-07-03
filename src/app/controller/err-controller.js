@@ -21,7 +21,18 @@ function error400(req, res) {
 }
 
 function error404(req, res) {
-
+    const errList = validationResult(req);
+    if (errList.isEmpty()) {
+        res.status(400).render('index', ({
+            data: null,
+            navBarDir: 'components/nav-bar/nav-bar',
+            listOptionDir: 'components/nav-bar/lista-opciones',
+            mainDir: 'components/main/err-404',
+            footerDir: 'components/footer/footer'
+        }));
+    }else{
+        res.redirect('/error-400');
+    }
 }
 
 export const errController = {
